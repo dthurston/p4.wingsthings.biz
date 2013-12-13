@@ -1,0 +1,120 @@
+html {
+    background-color: #07735e;
+    font-size:16; color: white; text-align: left;
+    font-family: arial;
+}
+
+/*-------------------------------------------------------------------------------------------------
+Links
+-------------------------------------------------------------------------------------------------*/
+a:link {
+    color: yellow;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #dcdcdc;
+    text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+    color: yellow;
+    text-decoration: none;
+}
+
+
+/*-------------------------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------------------------*/
+h1 {
+    font-size:30px;
+    color: white;
+    font-family: arial;
+    text-align: center;
+    padding-top:170px;
+}
+
+h2 {
+    font-size:16px;
+    font-family:arial;
+    color:white;
+}
+
+h3 {
+    font-size:11px;
+    font-family:arial;
+    color:white;
+}
+
+p {
+    font-size:20px;
+    color:white;
+    font-family:arial;
+    text-align:center;
+}
+
+
+/*-------------------------------------------------------------------------------------------------
+Main pieces
+-------------------------------------------------------------------------------------------------*/
+#results {
+    font-size:15px;
+    color: white;
+}
+
+#main {
+    max-width: 600px;
+    margin: 20px auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+.container {
+    position: relative;
+}
+#body {
+    margin-bottom: 120px;
+}
+#nav {
+    position: absolute;
+    left: 0px;
+    width: 200px;
+    font-size:15px;
+    color: white;
+    font-weight:bold;
+    font-family:arial;
+    text-align:left;
+}
+
+#section {
+    /* position is static by default */
+    margin-left: 200px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    background-color: white;
+    width: 100%;
+}
+img {
+    float: left;
+    margin: 0 0 1em 1em;
+}
+
+/* #footer {
+    font-size:13px;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    background-color: white;
+    color: #D8D8D8 ;
+    font-weight: bold;
+    font-family: arial;
+    text-align: center
+} */
