@@ -24,8 +24,7 @@
         <a href='/users/logout'>Logout | </a>
         <a href='/users/profile'>Profile | </a>
         <a href='/postcard/index'>Sent Postcards | </a>
-        <a href='/postcard/create'>Create Postcard | </a>
-        <a href='/postcard/photo'>Upload Photo | </a>
+        <a href='/postcard/create'>Create Postcard </a>
 
         <!-- Menu options for users who are not logged in -->
     <?php else: ?>

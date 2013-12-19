@@ -25,10 +25,13 @@ class postcard_controller extends base_controller {
         // Execute the query to get all the postcards
         // and store the result array in the variable $postcards
         $postcards = DB::instance(DB_NAME)->select_rows($q);
+        if (count($postcards) == 0) {
+            $nocards = "<h3>You don't have any postcards yet</h3>";
+        }
 
         // Pass data to the View
         $this->template->content->postcards = $postcards;
-
+        $this->template->content->nocards = $nocards;
         // Render the template
         echo $this->template;
     }
@@ -130,7 +133,7 @@ class postcard_controller extends base_controller {
 
 
 
-    public function edit() {
+/*    public function edit() {
         // A function to create a postcard
 
         // Setup the View
@@ -140,8 +143,8 @@ class postcard_controller extends base_controller {
         // Render the template
         echo $this->template;
     }
-
-    public function photo($error = NULL) {
+*/
+/*    public function photo($error = NULL) {
         // A function to view and upload a photo
 
         // if user is blank, then they're not logged in - redirect to login
@@ -161,9 +164,9 @@ class postcard_controller extends base_controller {
         //render the view
         echo $this->template;
     }
-
+*/
     // A function to upload a photo
-    public function photo_update() {
+/*    public function photo_update() {
 
         // If there is no one logged in, redirect to the login page
         if(!$this->user) {
@@ -197,7 +200,7 @@ class postcard_controller extends base_controller {
         # Redirect to the profile page
         router::redirect('/postcard/photo');
     }
-
+*/
 
 
     public function error() {

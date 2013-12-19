@@ -1,6 +1,7 @@
 <!-- The postcard_index view is for listing out your created postcards and link to the postcard add page -->
 <h1>This page is for viewing your postcards!</h1>
 <div class="container">
+<?php echo $nocards; ?>
 <?php foreach($postcards as $card): ?>
 
 <div class="row">
