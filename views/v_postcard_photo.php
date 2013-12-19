@@ -1,6 +1,6 @@
 <!-- The postcard_photo view is for listing out your uploaded photos and to upload more -->
 
-<?php foreach($posts as $post): ?>
+<?php //foreach($posts as $post): ?>
 
     <article>
 
@@ -14,4 +14,4 @@
 
     </article>
 
-<?php endforeach; ?>
+<?php //endforeach; ?>

@@ -4,18 +4,24 @@
 <h3>Create a Postcard</h3>
 <form role="form" method='POST' action='/postcard/p_create'>
 <div class="form-group">
-    <label for="salutation">Who did the birdie see?</label>
-    <input type="text" class="form-control" id="salutation" name="salutation" placeholder="Dear Fred"><br>
+    <label for="recipient">Who did the birdie see?</label>
+    <input type="text" class="form-control" id="recipient" name="recipient" placeholder="Fred Flinstone"><br>
     <label for="what-he-saw">What did the little birdie see?</label>
-    <input type="text" class="form-control" id="what-he-saw" name="what-he-saw" placeholder="I caught you sharing today...">
-    <label for="encouragement">Give them some praise!</label>
-    <input type="text" class="form-control" id="encouragement" name="encouragement" placeholder="Keep up the good work!">
-</div>
-<!-- <div class="form-group"> -->
+    <input type="text" class="form-control" id="message" name="message" placeholder="I caught you sharing today...">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address" name="address" placeholder="555 Happy Way">
+    <label for="city">City</label>
+    <input type="text" class="form-control" id="city" name="city" placeholder="Key West">
+    <label for="state">State</label>
+    <input type="text" class="form-control" id="state" name="state" placeholder="FL">
+    <label for="zip">Zip</label>
+    <input type="text" class="form-control" id="zip" name="zip" placeholder="33040">
+
     <label for="photo">Select the image on the postcard</label>
     <?php foreach($photos as $photo): ?>
-        <input type="radio" class="form-control" id="photo" name="photo">
+        <input type="radio" class="form-control" id="photo" name="photo" value="<?=$photo['image_name']?>">
         <img src="/uploads/photos/<?=$photo['image_name']?>" class="img-thumbnail" width="240" height="200">
+
     <?php endforeach; ?>
     <br>
     <input type='submit' value='Create your postcard'>
