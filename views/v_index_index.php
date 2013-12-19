@@ -7,8 +7,8 @@
     <p>
         <!-- If the user is logged in, give them a View Posts button -->
         <? if($user):
-            echo '<a href="/posts/index">My Sent Postcards</a><br>';
-            echo '<a href="/posts/index">Create A Postcard</a><br><br>';
+            echo '<a href="/postcard/index">My Sent Postcards</a><br>';
+            echo '<a href="/posts/index">Create A Postcard</a><br>';
             echo '<a href="/posts/index">Upload A Photo</a><br>';
             echo '<a href="/posts/index">My Current Photos</a><br>';
             echo '<a href="/users/profile">Edit Profile</a><br>';

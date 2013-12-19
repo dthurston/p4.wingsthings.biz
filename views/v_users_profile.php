@@ -7,11 +7,11 @@
     <?php if ($user->image == 'placeholder.jpg'): ?>
     <p> Please upload a picture of yourself! </p>
     <?php endif; ?>
-
+<!-- $$$ Need to add a holder.js image here if no image -->
 
 <form class="form-horizontal" role="form" method='POST' enctype="multipart/form-data" action='/users/profile_update/'>
     <div class="control-group">
-        <label class="control-label">Your Profile Image</label>
+        <label class="control-label">Your Profile Image</label><br>
         <div class="controls">
         <img src="/uploads/avatars/<?= $user->image ?>" alt="<?=$user->first_name . ' ' . $user->last_name ?>" class="img-polaroid">
         </div>

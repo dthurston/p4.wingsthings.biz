@@ -23,6 +23,8 @@ class users_controller extends base_controller {
     
 	public function p_signup() {
 
+        // Need to add a check for duplicate email
+
         // Store the created and modified times in the DB
     		$_POST['created']  = Time::now();
     		$_POST['modified'] = Time::now();

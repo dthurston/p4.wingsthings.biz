@@ -1,3 +1,5 @@
+<div class="page-header">
+    <h1><?=APP_NAME?><br><small>Login</small></h1>
 <form class="form-horizontal" method='POST' action='/users/p_login'>
     <div class="control-group">
     <label class="control-label" for "inputEmail">Email</label>
@@ -16,7 +18,6 @@
             <button type="submit" class="btn">Sign in</button>
         </div>
     </div>
-
 </form>
 
     <br><br>

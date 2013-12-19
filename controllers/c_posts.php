@@ -47,13 +47,14 @@ class posts_controller extends base_controller {
         $this->template->title = "All Posts";
 
         # Build the query to find all the posts assocated with this user
-        $q = 'SELECT posts.content, posts.created, posts.user_id AS post_user_id, users_users.user_id AS follower_id, users.first_name, users.last_name
+/*        $q = 'SELECT posts.content, posts.created, posts.user_id AS post_user_id, users_users.user_id AS follower_id, users.first_name, users.last_name
         FROM posts
         INNER JOIN users_users ON posts.user_id = users_users.user_id_followed
         INNER JOIN users ON posts.user_id = users.user_id
         WHERE users_users.user_id = '.$this->user->user_id.'
         ORDER BY posts.created DESC';
-
+*/
+        $q = 'SELECT * from postcard where user_id = ' .$this->user->user_id. ';';
         # Run the query, store the results in the variable $posts
         $posts = DB::instance(DB_NAME)->select_rows($q);
 
@@ -82,20 +83,20 @@ class posts_controller extends base_controller {
 
         # Build the query to figure out what connections does this user already have?
         # I.e. who are they following
-        $q = "SELECT *
-            FROM users_users
-            WHERE user_id = ".$this->user->user_id."
-            ORDER BY created DESC;";
+        //$q = "SELECT *
+        //    FROM users_users
+        //    WHERE user_id = ".$this->user->user_id."
+        //    ORDER BY created DESC;";
 
         # Execute this query with the select_array method
         # select_array will return our results in an array and use the "users_id_followed" field as the index.
         # This will come in handy when we get to the view
         # Store our results (an array) in the variable $connections
-        $connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
-
+        //$connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
+        $q = DB::instance(DB_NAME)->select_array($q, 'user_id');
         # Pass data (users and connections) to the view
         $this->template->content->users = $users;
-        $this->template->content->connections = $connections;
+        $this->template->content->connections = $q;
 
         # Render the view
         echo $this->template;
