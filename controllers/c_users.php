@@ -121,10 +121,10 @@ class users_controller extends base_controller {
 
     public function profile($user_name = NULL) {
 
-        // If there is no one logged in, redirect to the login page
-        if(!$this->user) {
+    // If there is no one logged in, redirect to the login page
+    if(!$this->user) {
         Router::redirect("/users/login");
-        }
+    }
 
     # Setup view
     $this->template->content = View::instance('v_users_profile');
