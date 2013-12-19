@@ -40,8 +40,18 @@ class users_controller extends base_controller {
 
     	// This should be changed to a post signup view.
         // For now, just route them to the index page...
-        Router::redirect("/");
+        Router::redirect("/users/success");
     }
+
+    public function success() {
+        # Setup view
+        $this->template->content = View::instance('v_users_success');
+        $this->template->title   = "Success!";
+
+        # Render template
+        echo $this->template;
+    }
+
 
 	public function login($error = NULL) {
 

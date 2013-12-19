@@ -26,7 +26,7 @@ class postcard_controller extends base_controller {
         // and store the result array in the variable $postcards
         $postcards = DB::instance(DB_NAME)->select_rows($q);
         if (count($postcards) == 0) {
-            $nocards = "<h3>You don't have any postcards yet</h3>";
+            $nocards = '<h3>You don\'t have any postcards yet</h3> Create one <a href="/postcard/create">here</a>';
         }
 
         // Pass data to the View

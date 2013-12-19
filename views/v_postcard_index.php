@@ -18,5 +18,3 @@
 </div><br><br>
 <?php endforeach; ?>
 </div> <!-- close container -->
-
-<a href="/">Home</a>
