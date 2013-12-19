@@ -11,27 +11,25 @@ class postcard_controller extends base_controller {
         //echo "users_controller construct called<br><br>";
     }
 
-
+    // A function to view the existing postcards
     public function index($error = NULL) {
-        // A function to view the existing postcards
 
         // Setup the View
         $this->template->content = View::instance('v_postcard_index');
         $this->template->title = "Viewing Postcards";
 
         // Pull the created postcards from the DB and display.
-        // Build the query to get all the postcards for the logged in user.
-        $q = 'SELECT postcard_id, image_name, created, message FROM postcard WHERE user_id = ' .$this->user->user_id.
-            ' ORDER BY created DESC LIMIT 3;';
+        $q = 'SELECT * FROM postcard WHERE user_id = ' .$this->user->user_id.
+            ' AND message != "" ORDER BY created DESC LIMIT 3;';
 
-        # Execute the query to get all the postcards
-        # and store the result array in the variable $postcards
+        // Execute the query to get all the postcards
+        // and store the result array in the variable $postcards
         $postcards = DB::instance(DB_NAME)->select_rows($q);
 
-        # Pass data to the View
+        // Pass data to the View
         $this->template->content->postcards = $postcards;
 
-        # Render the template
+        // Render the template
         echo $this->template;
     }
 
@@ -64,33 +62,25 @@ class postcard_controller extends base_controller {
                         ' image_name = "' . $_POST['photo'] . '",' .
                         ' created = ' . $_POST['created'] = Time::now() . ',' .
                         ' modified = ' . $_POST['modified'] = Time::now() . ',' .
-                        ' salutation = "' . $_POST['salutation'] . '",' .
-                        ' message = "' .$_POST['what-he-saw'] . '",' .
-                        ' encouragement = "' .$_POST['encouragement'] .'";';
+                        ' recipient = "' . $_POST['recipient'] . '",' .
+                        ' message = "' .$_POST['message'] . '",' .
+                        ' address = "' .$_POST['address'] . '",' .
+                        ' city = "' .$_POST['city'] . '",' .
+                        ' state = "' .$_POST['state'] . '",' .
+                        ' zip = ' .$_POST['zip'] . ';';
 
-    echo $newpostcard;
-//        '
-        // This should be changed to a post signup view.
-        // For now, just route them to the index page...
-        //        Router::redirect("/");
-        die();
-        // Pull the images from the DB and display them
-        $q = 'SELECT postcard_id, image_name FROM postcard WHERE user_id = ' .$this->user->user_id. ';';
+        // Execute the query
+        $photos = DB::instance(DB_NAME)->query($newpostcard);
 
-        # Execute the query to get all the postcards
-        # and store the result array in the variable $postcards
-        $photos = DB::instance(DB_NAME)->select_rows($q);
+        //# Pass data to the View
+        //$this->template->content->photos = $photos;
 
-        # Pass data to the View
-        $this->template->content->photos = $photos;
-
-        // Render the template
-        echo $this->template;
+        # Redirect to the postcard create page
+        Router::redirect('/postcard/index');
     }
 
     public function p_upload() {
-        //var_dump($_FILES);
-        # if the user specified a new image file, upload it
+         # if the user specified a new image file, upload it
         if ($_FILES['newphoto']['error'] == 0)
         {
 
@@ -108,37 +98,34 @@ class postcard_controller extends base_controller {
         $image = Upload::upload($_FILES, "/uploads/photos/",
             array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), generateRandomString());
 
-        if($image == 'Invalid file type.') {
-            # return an error
-            Router::redirect("/users/profile/error");
+            if($image == 'Invalid file type.') {
+                # return an error
+                Router::redirect("/users/profile/error");
+            }
+            else {
+                # create a link to the image in the DB image column of the users table
+                $data = Array("user_id" => $this->user->user_id,
+                    "image_name" => $image,
+                    "created" => $_POST['created'] = Time::now(),
+                    "modified" => $_POST['modified'] = Time::now()
+                );
+
+                DB::instance(DB_NAME)->insert("postcard", $data);
+
+                # resize the image to something sane
+                $imgObj = new Image($_SERVER["DOCUMENT_ROOT"] ."/uploads/photos/". $image);
+                $imgObj->resize(240,200, "crop");
+                $imgObj->save_image($_SERVER["DOCUMENT_ROOT"] . "/uploads/photos/" . $image);
+
+                # Redirect to the postcard create page
+                Router::redirect('/postcard/create');
+            }
         }
         else {
-            # create a link to the image in the DB image column of the users table
-            $data = Array("user_id" => $this->user->user_id,
-                "image_name" => $image,
-                "created" => $_POST['created'] = Time::now(),
-                "modified" => $_POST['modified'] = Time::now()
-            );
-
-            DB::instance(DB_NAME)->insert("postcard", $data);
-
-            # resize the image to something sane
-            $imgObj = new Image(APP_PATH ."uploads/photos/". $image);
-            $imgObj->resize(100,100, "crop");
-//            $imgObj->save_image($_SERVER["DOCUMENT_ROOT"] . $image);
-            $imgObj->save_image(APP_PATH ."uploads/photos/" . $image);
-
-            # Redirect to the postcard create page
-            Router::redirect('/postcard/create');
-        }
-        }
-    else {
             # Something has failed in the profile update
             Router::redirect("/users/profile/error");
-    }
-
-
-    }
+        }
+    } # End of function p_upload()
 
 
 
