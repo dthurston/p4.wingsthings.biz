@@ -7,6 +7,7 @@
     <!-- Common CSS/JSS -->
     <!-- Load Twitter Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/css/postcard.css" type="text/css">
 
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
@@ -16,22 +17,23 @@
     <div class="container">
     <div id="nav">
 
-    <!-- Menu -- everyone gets the Home link -->
+        <!-- Menu -- everyone gets the Home link -->
         <a href='/'>Home | </a>
 
-    <!-- Menu for users who are logged in -->
         <?php if($user): ?>
+        <!-- Menu -- users who are logged in -->
         <a href='/users/logout'>Logout | </a>
         <a href='/users/profile'>Profile | </a>
         <a href='/postcard/index'>Sent Postcards | </a>
         <a href='/postcard/create'>Create Postcard </a>
 
-        <!-- Menu options for users who are not logged in -->
-    <?php else: ?>
+
+        <?php else: ?>
+        <!-- Menu -- users who are not logged in -->
         <a href='/users/signup'>Sign up | </a>
         <a href='/users/login'>Log in </a>
 
-    <?php endif; ?>
+        <?php endif; ?>
 
     </div>
 

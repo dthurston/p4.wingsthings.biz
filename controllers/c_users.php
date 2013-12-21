@@ -12,37 +12,50 @@ class users_controller extends base_controller {
         echo "This is the index page";
     }
 
-    public function signup() {
-		# Setup view
+    public function signup($error = NULL) {
+		// Setup view
             $this->template->content = View::instance('v_users_signup');
             $this->template->title   = "Sign Up";
 
-        # Render template
+            $this->template->content->error = $error;
+
+        // Render template
             echo $this->template;
     }
     
 	public function p_signup() {
+        // If email is not valid, redirect to view with parameter to show error
+        if (!$this->email_validate($_POST['email'])) {
+            Router::redirect("/users/signup/failmail");
 
-        // Need to add a check for duplicate email
+        }
+        else {
 
-        // Store the created and modified times in the DB
+            // Check if email already exists
+            $existing = DB::instance(DB_NAME)->select_row('SELECT * FROM users
+                WHERE email = "' .$_POST['email']. '";');
+
+            if(isset($existing)) {
+                Router::redirect("/users/signup/error");
+            }
+            else {
+            // Store the created and modified times in the DB
     		$_POST['created']  = Time::now();
     		$_POST['modified'] = Time::now();
 		
-		// Encrypt the password using the salts from config.php
+		    // Encrypt the password using the salts from config.php
     		$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
 
-    	// Create an encrypted token via their email address and a random string
+    	    // Create an encrypted token via their email address and a random string
     		$_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string()); 
     		
-		// Insert the user into the database
+		    // Insert the user into the database
     		$user_id = DB::instance(DB_NAME)->insert('users', $_POST);
 
-    	// This should be changed to a post signup view.
-        // For now, just route them to the index page...
-        Router::redirect("/users/success");
+    	    Router::redirect("/users/success");
+            }
+        }
     }
-
     public function success() {
         # Setup view
         $this->template->content = View::instance('v_users_success');
@@ -67,14 +80,6 @@ class users_controller extends base_controller {
 }
 
 	public function p_login() {
-        # Set up the view
-        $this->template->content = View::instance('v_users_login');
-
-        # Verify there is an email address entered
-        if(!$_POST['email']) {
-            $this->template->content->error = '<p>Please enter an email address</p>';
-            echo $this->template;
-        }
 
     	    # Sanitize the form input data
     		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
@@ -98,8 +103,7 @@ class users_controller extends base_controller {
     		if(!$token) {
 
         		# Note the addition of the parameter "error"
-        		$this->template->content->error = '<p>This username &amp; password combination was not found.</p>';
-				echo $this->template;
+        		Router::redirect("/users/login/error");
     		}
     		# Login passed
     		else {
@@ -108,6 +112,10 @@ class users_controller extends base_controller {
     }
 
 }
+    public function email_validate($address) {
+        // Use a regex to validate the email address
+        return preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/i', $address);
+    }
 
     public function logout() {
 
@@ -138,7 +146,6 @@ class users_controller extends base_controller {
 
     # Setup view
     $this->template->content = View::instance('v_users_profile');
-
     # Set page title
     $this->template->title = $this->user->first_name . "'s ". APP_NAME ." Profile";
 

@@ -13,16 +13,18 @@
             <input type="password" id="inputPassword" placeholder="Password" name="password">
             </div>
     </div>
+
+    <!-- If there are any errors, display them here -->
+    <?php if(isset($error)): ?>
+    <div class='error'>
+        Login failed.  Please double check your email and password.
+    </div>
+    <br>
+    <?php endif; ?>
+
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn">Sign in</button>
         </div>
     </div>
 </form>
-
-    <br><br>
-    <!-- If there are any errors, display them here -->
-    <?php if(isset($error)): ?>
-        <?php echo $error; ?>
-        <br>
-    <?php endif; ?>

@@ -1,0 +1,17 @@
+.hero-p {
+    color:#FFFFFF;
+}
+
+.hero-unit {
+    background-image:url('/images/Cardinal.jpg');
+    background-size: 100%;
+    /*940 x 630*/
+    background-repeat: no-repeat;
+    background-position: center;
+    /*opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.hero-a {
+    color:#FFFFFF;
+}
