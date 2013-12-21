@@ -4,12 +4,8 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery.js"></script>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!--<script src="/js/bootstrap.min.js"></script> -->
-<!--<script type="text/javascript" src="js/jquery.form.js"></script>-->
-
 <h1>This page is for viewing your postcards!</h1>
-
+<p>Click on any card to flip them over!</p>
 <div class="container">
     <!--If there are no cards yet, echo out the $nocards message from the postcard controller -->
     <?php echo $nocards; ?>
