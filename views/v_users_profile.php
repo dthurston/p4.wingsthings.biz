@@ -1,6 +1,7 @@
 <h1>It's your profile <?=$user->first_name?>!</h1>
 <p>You've been a proud member since <?= date('F j, Y', $user->created) ?></p>
 
+<script type="text/javascript" data-src="/js/holder.js"></script>
 
 <form class="form-horizontal" role="form" method='POST' enctype="multipart/form-data" action='/users/profile_update'>
     <div class="control-group">

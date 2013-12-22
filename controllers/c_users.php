@@ -193,7 +193,7 @@ class users_controller extends base_controller {
 
                 # resize the image to something sane
                 $imgObj = new Image($_SERVER["DOCUMENT_ROOT"] . '/uploads/avatars/' . $image);
-                $imgObj->resize(100,100, "crop");
+                $imgObj->resize(300,350, "crop");
                 $imgObj->save_image($_SERVER["DOCUMENT_ROOT"] . '/uploads/avatars/' . $image);
             }
         }

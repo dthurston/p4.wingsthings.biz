@@ -4,6 +4,8 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
 <script src="/js/jquery-2.0.2.min.js"></script>
+<!--<script src="/js/printThis.js"></script>-->
+<script src="/js/printCard.js"></script>
 <!-- load the postcard.js javascript that will flip the card -->
 <script src="/js/postcard.js"></script>
 <h1>This page is for viewing your postcards!</h1>
@@ -13,7 +15,8 @@
     <?php echo $nocards; ?>
     <?php foreach($postcards as $card): ?>
 
-<div class="front" id="<?php echo $card['postcard_id']?>" style="width:600px;display:none;" onclick="flipCard('<?php echo $card['postcard_id']?>')">
+<div class="front" id="<?php echo $card['postcard_id']?>" style="width:600px;display:none;"
+     onclick="flipCard('<?php echo $card['postcard_id']?>')">
 
         <img src="/uploads/photos/<?=$card['image_name']?>" height="350" width="650"><br>
 
@@ -46,8 +49,8 @@
             </div>
         </div>
 
-        <div id="footer" style="background-color:#F2F2F2;clear:both;text-align:center;">
-            Created at http://p4.wingsthings.biz
+        <div id="footer" style="background-color:#F2F2F2;clear:both;text-align:center;" onclick="printCard('<?php echo $card['postcard_id']?>')">
+            Created at http://p4.wingsthings.biz.
         </div>
 
     </div>
