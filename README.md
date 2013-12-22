@@ -18,3 +18,8 @@ Usage of javascript:
 I'm using javascript to flip the card on v_postcard_index.php.  The function flipCard() is called and it passes the id
 of the card to the jquery expression, which manipulates the div holding the front and the back of the card.
 
+As well, I was trying to get printThis() integrated in to print the front and back of the post card.  I'm running
+into issues with the image which starts out with <div style="display: none;"> showing up when you click on the print
+option at the bottom of the post card.  I could have gone the easy route and made the front and back of the postcard
+display all at once, but I wanted the card to flip over.
+
