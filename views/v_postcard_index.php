@@ -50,7 +50,7 @@
         </div>
 
         <div id="footer" style="background-color:#F2F2F2;clear:both;text-align:center;" onclick="printCard('<?php echo $card['postcard_id']?>')">
-            Created at http://p4.wingsthings.biz.
+            Created at http://p4.wingsthings.biz. Click here to print.
         </div>
 
     </div>
