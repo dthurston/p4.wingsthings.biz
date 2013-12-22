@@ -122,7 +122,7 @@ class postcard_controller extends base_controller {
 
                 // resize the image to something sane
                 $imgObj = new Image($_SERVER["DOCUMENT_ROOT"] ."/uploads/photos/". $image);
-                $imgObj->resize(350,650, "crop");
+                $imgObj->resize(650,350, "crop");
                 $imgObj->save_image($_SERVER["DOCUMENT_ROOT"] . "/uploads/photos/" . $image);
 
                 // Redirect to the postcard create page
