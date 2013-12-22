@@ -12,3 +12,9 @@ A Little Bird Told Me….
 4. The user creates or edits the photo into a post card from a little birdie who was watching
 5. The user adds a note to tell whoever was naughty or nice what they did!
 6. The user can send as an email or postcard
+
+Usage of javascript:
+
+I'm using javascript to flip the card on v_postcard_index.php.  The function flipCard() is called and it passes the id
+of the card to the jquery expression, which manipulates the div holding the front and the back of the card.
+

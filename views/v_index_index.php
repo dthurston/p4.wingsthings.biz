@@ -21,7 +21,7 @@
         <!-- If the user is not logged in, give them a Join button -->
         <?php else: {
             echo '<p class="hero-p">Create a postcard from the little birdie right now!</p>';
-            echo '<a href="/users/signup" class="btn btn-primary btn-large">Join '. APP_NAME . '</a>';
+            echo '<a href="/users/signup" class="btn btn-primary btn-large">Join ' . APP_NAME . '</a>';
         } ?>
         <? endif; ?>
     </p>

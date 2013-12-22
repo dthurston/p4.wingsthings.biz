@@ -2,8 +2,10 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery.js"></script>
-
+<!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+<script src="/js/jquery-2.0.2.min.js"></script>
+<!-- load the postcard.js javascript that will flip the card -->
+<script src="/js/postcard.js"></script>
 <h1>This page is for viewing your postcards!</h1>
 <p>Click on any card to flip them over!</p>
 <div class="container">
@@ -11,13 +13,13 @@
     <?php echo $nocards; ?>
     <?php foreach($postcards as $card): ?>
 
-<div class="front" style="width:600px;display:none; ">
+<div class="front" id="<?php echo $card['postcard_id']?>" style="width:600px;display:none;" onclick="flipCard('<?php echo $card['postcard_id']?>')">
 
         <img src="/uploads/photos/<?=$card['image_name']?>" height="350" width="650"><br>
 
 </div>
 
-<div class="back" id="<?php echo $card['postcard_id']?>" style="width:600px">
+<div class="back" id="<?php echo $card['postcard_id']?>" style="width:600px" onclick="flipCard('<?php echo $card['postcard_id']?>')">
     <div id="header" style="background-color:#F2F2F2;height:30px;width:600px;">
     </div>
             <div id="left-side" style="background-color:#F2F2F2;height:300px;width:350px;float:left;">
@@ -49,28 +51,6 @@
         </div>
 
     </div>
-    <script>
-        $( ".back" ).on( "click", function() {
-            console.log("clicked");
-            $(".back").fadeOut("fast", function() {
-                // fade back in
-            });
-
-            $(".front").fadeIn("fast", function() {
-                // fade back in
-            });
-        });
-        $( ".front" ).on( "click", function() {
-            $(".front").fadeOut("fast", function() {
-                // fade back in
-            });
-
-            $(".back").fadeIn("fast", function() {
-                // fade back in
-            });
-        });
-    </script>
-
 </div>
 <br><br>
 
