@@ -17,7 +17,7 @@
     <div class="container">
     <div id="nav">
 
-        <!-- Menu -- everyone gets the Home link -->
+        <!-- everyone gets the Home link -->
         <a href='/'>Home | </a>
 
         <?php if($user): ?>
@@ -29,7 +29,7 @@
 
 
         <?php else: ?>
-        <!-- Menu -- users who are not logged in -->
+        <!-- Menu users who are not logged in -->
         <a href='/users/signup'>Sign up | </a>
         <a href='/users/login'>Log in </a>
 

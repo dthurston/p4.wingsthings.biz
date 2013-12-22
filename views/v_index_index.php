@@ -24,5 +24,5 @@
             echo '<a href="/users/signup" class="btn btn-primary btn-large">Join ' . APP_NAME . '</a>';
         } ?>
         <? endif; ?>
-    </p>
+
 </div>
