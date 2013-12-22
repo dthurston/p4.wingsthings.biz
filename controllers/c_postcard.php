@@ -43,7 +43,7 @@ class postcard_controller extends base_controller {
         $this->template->title = "Create a New Postcard";
 
         // Pull the last 3 images from the DB and display them
-        $q = 'SELECT postcard_id, image_name FROM postcard WHERE user_id = ' .$this->user->user_id.
+        $q = 'SELECT DISTINCT image_name FROM postcard WHERE user_id = ' .$this->user->user_id.
             ' ORDER BY created DESC LIMIT 3;';
 
         # Execute the query to get all the postcards
