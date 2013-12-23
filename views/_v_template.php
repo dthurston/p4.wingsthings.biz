@@ -48,6 +48,7 @@
     </div> <!-- End container -->
 
 
+<p style="text-align: center;">Derek Thurston, CSCI E-15 Dynamic Web Applications, Fall 2013</p>
     <!-- Load Jquery -->
     <script type="text/javascript" src="/js/jquery-2.0.2.min.js"></script>
 
