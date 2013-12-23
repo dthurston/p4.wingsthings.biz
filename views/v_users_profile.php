@@ -8,7 +8,7 @@
         <div class="controls">
             <?php if ($user->image  == ''):
                 echo '<script src="/js/holder.js"></script>';
-                echo '<p>Why not keep your profile looking snazzy with a nice picture of your fine self?</p>';
+                echo '<p>Please upload a picture of yourself!</p>';
                 echo '<img data-src="holder.js/200x200/text:Add Your Picture">';
             else:
                 echo '<img src="/uploads/avatars/' . $user->image . '" alt="' . $user->first_name . ' ' . $user->last_name . '" class="img-polaroid">';
